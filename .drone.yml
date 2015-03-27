@@ -2,7 +2,7 @@ image: bradrydzewski/ruby:2.0.0
 script:
   - mkdir -p /tmp/bundle
   - sudo chown -R ubuntu:ubuntu /tmp/bundle
-  - bundle install -j8 --path /tmp/bundle
+  - bundle install --path /tmp/bundle
   - bundle exec rake spec
 cache:
   - /tmp/bundle
