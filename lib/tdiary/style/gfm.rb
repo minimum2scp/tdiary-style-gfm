@@ -177,6 +177,7 @@ module TDiary
 						end
 					when /^```/
 						in_code_block = !in_code_block
+						section = "\n" unless section
 						section << l
 					else
 						section = '' unless section
