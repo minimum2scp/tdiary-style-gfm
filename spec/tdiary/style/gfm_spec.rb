@@ -606,6 +606,32 @@ NOTE: `{{.NetworkSettings.IPAddress}}` is golang template.
 		end
 		it { expect(@diary.to_html).to eq @html }
 	end
+
+	describe 'codeblock without subTitle' do
+		before do
+			source = <<-EOF
+```
+#! /bin/sh
+
+echo "Hello, world"
+```
+         EOF
+			@diary.append(source)
+			@html = <<-EOF
+<div class="section">
+<%=section_enter_proc( Time.at( 1041346800 ) )%>
+<pre><code>#! /bin/sh
+
+echo &quot;Hello, world&quot;
+</code></pre>
+<%=section_leave_proc( Time.at( 1041346800 ) )%>
+</div>
+         EOF
+		end
+
+		it { expect(@diary.to_html).to eq @html }
+	end
+
 end
 
 # Local Variables:
